@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة أربطة مطاطية للتمارين</title>
+
+<!-- ================= META PIXEL ================= -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '747999204374622');
+fbq('track', 'PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=747999204374622&ev=PageView&noscript=1"/>
+</noscript>
+<!-- ================= END META PIXEL ================= -->
+
+<style>
+body{margin:0;font-family:tahoma;background:#f6f7fb}
+header{background:#2563eb;color:#fff;text-align:center;padding:20px}
+.wrap{max-width:900px;margin:auto;padding:12px}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:#fff;padding:16px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+img{width:100%;border-radius:12px}
+.gallery{display:flex;gap:8px;margin-top:8px;overflow-x:auto}
+.gallery img{width:70px;height:70px;cursor:pointer}
+input,select,textarea{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:1px solid #e2e8f0}
+.btn{margin-top:12px;width:100%;padding:14px;border:none;border-radius:12px;background:#2563eb;color:#fff;font-size:18px}
+.total{font-size:18px;font-weight:bold;color:#16a34a}
+.order-float{position:fixed;bottom:16px;left:16px;right:16px;background:#16a34a;color:#fff;padding:14px;border-radius:12px;text-align:center;font-size:18px}
+@media(min-width:768px){.order-float{left:auto;right:20px;top:20px;bottom:auto;border-radius:999px}}
+.bottom-images{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+@media(max-width:768px){.bottom-images{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.bottom-images{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+
+<button class="order-float" onclick="scrollToOrder()">اطلب الآن</button>
+
+<header>
+<h1>مجموعة أربطة مطاطية للتمارين</h1>
+<p>6 مستويات مقاومة • مشبك باب • حوامل يد وقدم</p>
+</header>
+
+<div class="wrap">
+<div class="grid">
+
+<!-- PRODUCT -->
+<div class="card">
+<img id="mainImg" src="image/1000022656.png">
+<div class="gallery">
+<img src="image/1000022649.jpg" onclick="changeImg(this)">
+<img src="image/1000022877.png" alt="">
+<img src="image/1000022655.png" onclick="changeImg(this)">
+<img src="image/1000023918.png" onclick="changeImg(this)">
+<img src="image/1000023916.png" onclick="changeImg(this)">
+</div>
+</div>
+
+<!-- ORDER -->
+<div class="card" id="order-section">
+<form id="orderForm" action="https://formspree.io/f/mbladdbq" method="POST">
+
+<input name="name" placeholder="الاسم" required>
+<input name="phone" placeholder="رقم الهاتف" required>
+<textarea name="address" placeholder="العنوان" required></textarea>
+
+<label>الولاية</label>
+<select id="wilaya" required></select>
+
+<label>طريقة التوصيل</label>
+<select id="delivery">
+<option value="home">إلى المنزل</option>
+<option value="desk">مكتب الاستلام</option>
+</select>
+
+<div class="card" style="background:#f8fafc;margin-top:10px">
+سعر المنتج: <b>2950 دج</b><br>
+رسوم التوصيل: <b><span id="ship">0</span> دج</b><br>
+<span class="total">الإجمالي: <span id="total">2950</span> دج</span>
+</div>
+
+<input type="hidden" id="total_price" name="total_price">
+
+<button class="btn" type="submit" onclick="fbq('track','Lead')">
+تأكيد الطلب ✅
+</button>
+
+</form>
+
+<div class="bottom-images">
+<img src="image/1000023164.jpg">
+
+
+<img src="image/1000023163.jpg">
+<img src="image/1000023918.png">
+<img src="image/1000023916.png">
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+const PRICE = 2950;
+
+/* ================= ALL 58 WILAYAS ================= */
+const WILAYAS = [
+{c:'01',n:'Adrar',home:1200,desk:750},
+{c:'02',n:'Chlef',home:600,desk:400},
+{c:'03',n:'Laghouat',home:800,desk:500},
+{c:'04',n:'Oum El Bouaghi',home:600,desk:400},
+{c:'05',n:'Batna',home:600,desk:400},
+{c:'06',n:'Béjaïa',home:600,desk:350},
+{c:'07',n:'Biskra',home:800,desk:500},
+{c:'08',n:'Béchar',home:1200,desk:650},
+{c:'09',n:'Blida',home:500,desk:350},
+{c:'10',n:'Bouira',home:600,desk:400},
+{c:'11',n:'Tamanrasset',home:1200,desk:1050},
+{c:'12',n:'Tébessa',home:600,desk:400},
+{c:'13',n:'Tlemcen',home:600,desk:350},
+{c:'14',n:'Tiaret',home:600,desk:350},
+{c:'15',n:'Tizi Ouzou',home:600,desk:350},
+{c:'16',n:'Alger',home:400,desk:200},
+{c:'17',n:'Djelfa',home:800,desk:500},
+{c:'18',n:'Jijel',home:600,desk:400},
+{c:'19',n:'Sétif',home:600,desk:400},
+{c:'20',n:'Saïda',home:600,desk:400},
+{c:'21',n:'Skikda',home:600,desk:350},
+{c:'22',n:'Sidi Bel Abbès',home:600,desk:350},
+{c:'23',n:'Annaba',home:600,desk:350},
+{c:'24',n:'Guelma',home:600,desk:400},
+{c:'25',n:'Constantine',home:600,desk:350},
+{c:'26',n:'Médéa',home:600,desk:400},
+{c:'27',n:'Mostaganem',home:600,desk:400},
+{c:'28',n:'M’Sila',home:600,desk:400},
+{c:'29',n:'Mascara',home:600,desk:350},
+{c:'30',n:'Ouargla',home:900,desk:650},
+{c:'31',n:'Oran',home:600,desk:400},
+{c:'32',n:'El Bayadh',home:900,desk:650},
+{c:'33',n:'Illizi',home:1200,desk:1050},
+{c:'34',n:'Bordj',home:600,desk:400},
+{c:'35',n:'Boumerdès',home:500,desk:350},
+{c:'36',n:'El Tarf',home:600,desk:350},
+{c:'37',n:'Tindouf',home:1200,desk:750},
+{c:'38',n:'Tissemsilt',home:600,desk:350},
+{c:'39',n:'El Oued',home:900,desk:650},
+{c:'40',n:'Khenchela',home:600,desk:400},
+{c:'41',n:'Souk Ahras',home:600,desk:400},
+{c:'42',n:'Tipaza',home:500,desk:350},
+{c:'43',n:'Mila',home:600,desk:400},
+{c:'44',n:'Aïn Defla',home:600,desk:400},
+{c:'45',n:'Naâma',home:900,desk:650},
+{c:'46',n:'Aïn Témouchent',home:600,desk:400},
+{c:'47',n:'Ghardaïa',home:900,desk:650},
+{c:'48',n:'Relizane',home:600,desk:400},
+{c:'49',n:'Timimoun',home:1200,desk:750},
+{c:'51',n:'Ouled Djellal',home:800,desk:500},
+{c:'52',n:'Beni Abbès',home:1200,desk:1200},
+{c:'53',n:'In Salah',home:1200,desk:1050},
+{c:'55',n:'Touggourt',home:1000,desk:650},
+{c:'56',n:'Djanet',home:1200,desk:1200},
+{c:'57',n:'El M’Ghair',home:1000,desk:1000},
+{c:'58',n:'El Meniaa',home:1000,desk:650}
+];
+
+/* Populate wilayas */
+const wilayaSel=document.getElementById('wilaya');
+WILAYAS.forEach(w=>{
+let o=document.createElement('option');
+o.value=w.c;
+o.textContent=w.c+' - '+w.n;
+wilayaSel.appendChild(o);
+});
+
+function updateTotal(){
+const w=WILAYAS.find(x=>x.c===wilayaSel.value);
+const d=document.getElementById('delivery').value;
+const ship=w?w[d]:0;
+document.getElementById('ship').textContent=ship;
+document.getElementById('total').textContent=PRICE+ship;
+document.getElementById('total_price').value=PRICE+ship;
+}
+
+wilayaSel.onchange=updateTotal;
+document.getElementById('delivery').onchange=updateTotal;
+
+function scrollToOrder(){
+document.getElementById('order-section').scrollIntoView({behavior:'smooth'});
+}
+function changeImg(img){
+document.getElementById('mainImg').src=img.src;
+}
+
+/* Purchase event */
+document.getElementById('orderForm').addEventListener('submit',()=>{
+fbq('track','Purchase',{
+value:document.getElementById('total_price').value,
+currency:'DZD'
+});
+});
+</script>
+
+</body>
+</html>
